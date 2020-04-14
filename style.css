@@ -85,7 +85,7 @@ todo-item {
     padding: 0rem 0.5rem;
 }
 
-.fa-trash, .fa-check {
+.fa-trash-alt, .fa-check {
     pointer-events: none;  /* clicking on icon will prevent not clicking under button */
 }
 
