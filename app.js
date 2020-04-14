@@ -2,10 +2,12 @@
 const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
+const filterOption = document.querySelector(".filter-todo");
 
 //Event listeners
 todoButton.addEventListener('click', addTodo);
-todoList.addEventListener('click', delteCheck);
+todoList.addEventListener('click', deleteCheck);
+filterOption.addEventListener('click', filterTodo);
 //Functions
 
 
@@ -18,10 +20,10 @@ function addTodo(event){
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
     
-    const compltedButton = document.createElement('button');
-    compltedButton.innerHTML = '<i class="fas fa-check"></i>';
-    compltedButton.classList.add("complete-btn");
-    todoDiv.appendChild(compltedButton);
+    const completedButton = document.createElement('button');
+    completedButton.innerHTML = '<i class="fas fa-check"></i>';
+    completedButton.classList.add("complete-btn");
+    todoDiv.appendChild(completedButton);
 
 
 
@@ -35,7 +37,7 @@ function addTodo(event){
     todoInput.value = '';
 }
 
-function delteCheck(event){
+function deleteCheck(event){
     const item = event.target;
 
     if(item.classList[0] === 'trash-btn'){
@@ -52,4 +54,36 @@ function delteCheck(event){
         todo.classList.toggle('completed');
     }
 
+}
+
+function filterTodo(event) {
+    const todos = todoList.childNodes;
+    console.log(todos)
+    todos.forEach(function(todo){
+        // console.log(todos)
+        switch(event.target.value){
+            case "all":
+                todo.style.display = 'flex';
+                // todo.style.background = 'pink';
+                break;
+            case "completed":
+                if (todo.classList.contains('completed')){
+                    // todo.style.background = 'red';
+                    todo.style.display = 'flex';
+                    // console.log(todo.style.display);
+                } else {
+                    // todo.style.background = "green";
+                    todo.style.display = 'none';
+                }
+                break;
+            case "uncompleted":
+                if (!todo.classList.contains('completed')){
+                    todo.style.display = 'flex';
+                } else {
+                    todo.style.display = 'none';
+                }
+                break;
+        }
+    });
+    
 }

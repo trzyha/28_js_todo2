@@ -41,6 +41,7 @@ form button:hover {
     color: white;
 }
 
+
 .todo-container {
     display: flex;
     justify-content: center;
@@ -96,4 +97,42 @@ todo-item {
 .fall {
     transform: translateY(8rem) rotateZ(20deg);
     opacity: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+
+.select {
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+select {
+    color: #07344d;
+    width: 10rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.select::after{
+    content: "\25bc";
+    position: absolute;
+    background: white;
+    color: #07344d;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none; /*click through it*/
+    transition: all 0.3s ease;
+}
+
+.select:hover::after{
+    background: #07344d;
+    color: white;
 }
